@@ -3,7 +3,6 @@ package com.devops.productservice.controller;
 import com.devops.productservice.dto.APIResponse;
 import com.devops.productservice.dto.request.ProductRequest;
 import com.devops.productservice.dto.response.ProductResponse;
-import com.devops.productservice.entity.Product;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ProductControllerTest {
+class IntegrationTest {
 
     @LocalServerPort
     private int port;
