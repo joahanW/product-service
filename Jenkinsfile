@@ -11,6 +11,16 @@ pipeline{
     }
 
     stages{
+         stage('Setup Database') {
+            steps {
+                sh '''
+                docker run -d --network postgres-network --name postgres-test \
+                -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password \
+                -e POSTGRES_DB=product_service_db postgres:latest
+                sleep 10
+                '''
+            }
+        }
         stage("Integration Testing"){
             steps{
                 sh("mvn verify")
