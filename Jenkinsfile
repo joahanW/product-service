@@ -6,6 +6,10 @@ pipeline{
         maven 'maven3'
     }
 
+    environment{
+        SCANNER_HOME= tool 'sonarqube-scanner'
+    }
+
     stages{
         stage("Code Compile"){
             steps{
@@ -20,6 +24,15 @@ pipeline{
         stage("Integration Testing"){
             steps{
                 sh("mvn verify")
+            }
+        }
+        stage("SonarQube Analysis"){
+            steps{
+               withSonarQubeEnv('sonarqube-server') {
+                   sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=product-service \
+                   -Dsonar.projectKey=product-service \
+                   -Dsonar.java.binaries=. '''
+               }
             }
         }
     }
