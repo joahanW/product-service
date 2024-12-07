@@ -12,12 +12,11 @@ pipeline{
                 sh("mvn clean compile")
             }
         }
-        stage("Code Compile"){
+        stage("Unit Testing"){
             steps{
-                sh("mvn clean compile")
+                sh("mvn test")
             }
         }
-
     }
 
 
