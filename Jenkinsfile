@@ -4,14 +4,15 @@ pipeline{
         stage('Build'){
             steps{
                 echo ('Start Build')
-                sh("./mvnw clean compile test-compile")
+                sh('chmod +x ./mvnw')
+                sh('./mvnw clean compile test-compile')
                 echo ('End Build')
             }
         }
         stage('Test'){
             steps{
                 echo ('Start Test')
-                sh("./mvnw test")
+                sh('./mvnw test')
                 echo ('End Test')
 
             }
