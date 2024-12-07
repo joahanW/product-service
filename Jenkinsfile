@@ -8,37 +8,36 @@ pipeline{
     }
 
     stages{
-        stage('Prepare'){
+        stage("Prepare"){
             steps{
-                echo ('Author ${AUTHOR}')
-                echo ('Email ${EMAIL}')
-                echo ('Web ${WEB}')
-                echo ('Start Job: ${env.JOB_NAME}')
-                echo ('Start Build Number: ${env.BUILD_NUMBER}')
-                echo ('Branch name: ${env.BRANCH_NAME}')
+                echo ("Author ${AUTHOR}")
+                echo ("Email ${EMAIL}")
+                echo ("Web ${WEB}")
+                echo ("Start Job: ${env.JOB_NAME}")
+                echo ("Start Build Number: ${env.BUILD_NUMBER}")
+                echo ("Branch name: ${env.BRANCH_NAME}")
             }
         }
-        stage('Build'){
+        stage("Build"){
             steps{
-                echo ('Start Build')
-                sh('chmod +x ./mvnw')
-                sh('./mvnw clean compile test-compile')
-                echo ('End Build')
+                echo ("Start Build")
+                sh("chmod +x ./mvnw")
+                sh("./mvnw clean compile test-compile")
+                echo ("End Build")
             }
         }
-        stage('Test'){
+        stage("Test"){
             steps{
-                echo ('Start Test')
-                sh('./mvnw test')
-                echo ('End Test')
-
+                echo ("Start Test")
+                sh("./mvnw test")
+                echo ("End Test")
             }
         }
-        stage('Deploy'){
+        stage("Deploy"){
             steps{
-                echo ('Start Deploy')
+                echo ("Start Deploy")
                 sleep(5)
-                echo('End Deploy')
+                echo("End Deploy")
             }
         }
     }
