@@ -19,10 +19,7 @@ pipeline{
          }
          stage('Setup Database') {
             steps {
-                script{
-                    img = 'postgres:latest'
-                    docker.image("${img}").run('--name postgres-test -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=product_service_db -d')
-                }
+                
             }
         }
         stage("Integration Testing"){
