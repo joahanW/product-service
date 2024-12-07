@@ -11,7 +11,7 @@ pipeline{
     post{
         always{
             echo "This for always notify!!!"
-        {
+        }
         success{
             echo "Notify Success"
         }
