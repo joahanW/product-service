@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     environment {
-        AUTHOR: "Johan Works"
-        EMAIL: "johan.works@gmail.com"
-        WEB: "https://johanmarkets.com"
+        AUTHOR = "Johan Works"
+        EMAIL = "johan.works@gmail.com"
+        WEB = "https://johanmarkets.com"
     }
 
     stages{
