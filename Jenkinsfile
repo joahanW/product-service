@@ -11,6 +11,12 @@ pipeline{
     }
 
     stages{
+        stage('Check Docker') {
+            steps {
+                sh 'docker --version'
+                echo("TEST DOCKER!!")
+            }
+         }
          stage('Setup Database') {
             steps {
                 sh '''
