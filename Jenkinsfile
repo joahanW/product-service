@@ -11,16 +11,6 @@ pipeline{
     }
 
     stages{
-        stage("Code Compile"){
-            steps{
-                sh("mvn clean compile")
-            }
-        }
-        stage("Unit Testing"){
-            steps{
-                sh("mvn test")
-            }
-        }
         stage("Integration Testing"){
             steps{
                 sh("mvn verify")

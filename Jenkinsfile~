@@ -11,16 +11,7 @@ pipeline{
     }
 
     stages{
-        stage("Code Compile"){
-            steps{
-                sh("mvn clean compile")
-            }
-        }
-        stage("Unit Testing"){
-            steps{
-                sh("mvn test")
-            }
-        }
+       
         stage("Integration Testing"){
             steps{
                 sh("mvn verify")
@@ -31,8 +22,7 @@ pipeline{
                withSonarQubeEnv('sonarqube-server') {
                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=product-service \
                    -Dsonar.projectKey=product-service \
-                   -Dsonar.java.binaries=. \
-                   
+                   -Dsonar.java.binaries=. '''
                }
             }
         }
