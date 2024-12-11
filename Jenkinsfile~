@@ -1,21 +1,5 @@
 pipeline{
     agent any
-<<<<<<< HEAD
-    stages{
-        stage("Build"){
-            steps{
-                echo "Start Building"
-            }
-        }
-        stage('Test'){
-            steps{
-                echo "Start Testing"
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo "Start Deploying"
-=======
 
     tools {
         jdk 'jdk17'
@@ -27,6 +11,12 @@ pipeline{
     }
 
     stages{
+        stage('Check Docker') {
+            steps {
+                sh 'docker --version'
+                echo("TEST DOCKER!!")
+            }
+         }
          stage('Setup Database') {
             steps {
                 script{
@@ -47,7 +37,6 @@ pipeline{
                    -Dsonar.projectKey=product-service \
                    -Dsonar.java.binaries=. '''
                }
->>>>>>> 50c4f14e96ffa119ca3325348dc1d326de364b9a
             }
         }
     }
