@@ -8,11 +8,16 @@ pipeline{
 
     stages{
          stage("Prepare"){
+            environment{
+                APP= credentials("postgres")
+            }
             steps{
                 echo "Start Job: ${env.JOB_NAME}"
                 echo "Build number: ${env.BUILD_NUMBER}"
                 echo "Author= ${AUTHOR}"
                 echo "Email= ${EMAIL}"
+                echo "App User: ${APP_USR}"
+                echo "App Password: ${APP_PSW}"
             }
         }
         stage("Build"){
