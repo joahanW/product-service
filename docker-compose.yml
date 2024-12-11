@@ -4,25 +4,26 @@ services:
     image: postgres
     container_name: product-db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: product_service_db
+      - POSTGRES_USER= postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=product_service_db
     healthcheck:
       test: ["CMD","pg_isready", "-U", "postgres", "-d", "product_service_db"]
-      interval: 10s
       timeout: 5s
-      retries: 10
       start_period: 10s
+      interval: 10s
+      retries: 5
     deploy:
       resources:
         limits:
           memory: 700m
+          cpus: 2
     networks:
       - johanmarket
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - jmarket_data:/var/lib/postgresql/data
 
   product:
     image: johanwork/product-service:0.0.1
@@ -32,11 +33,12 @@ services:
     deploy:
       resources:
         limits:
-          memory: 700m
+          memory: 2g
+          cpus: 2
     networks:
       - johanmarket
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://productdb:5432/product_service_db"
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://productdb:5432/product_service_db
     depends_on:
       productdb:
         condition: service_healthy
@@ -45,5 +47,5 @@ networks:
   johanmarket:
     driver: "bridge"
 volumes:
-  postgres_data:
-    name: postgres_data
+  jmarket_data:
+    name: jmarket_data
