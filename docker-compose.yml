@@ -12,7 +12,7 @@ services:
     healthcheck:
       test: ["CMD","pg_isready", "-U", "postgres", "-d", "product_service_db"]
       interval: 10s
-      timeout: 5s
+      timeout: 2s
       retries: 10
       start_period: 10s
     deploy:
