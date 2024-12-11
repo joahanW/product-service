@@ -17,7 +17,7 @@ pipeline{
                 echo "Author= ${AUTHOR}"
                 echo "Email= ${EMAIL}"
                 echo "App User: ${APP_USR}"
-                echo "App Password: ${APP_PSW}"
+                sh ('echo "App password: $APP_PSW" > "secret.txt"')
             }
         }
         stage("Build"){
