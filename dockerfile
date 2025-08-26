@@ -1,16 +1,16 @@
 FROM digiotech/doc_signer:jdk17-arm64
 
-LABEL author="Johan"
+WORKDIR /app
+
+LABEL author="Johan" \
       website="johan.com"
 
-RUN mkdir app
-RUN echo "Hello world" > app/hello.txt
+RUN echo "Hello world" > hello.txt
 
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=*.jar
 
 COPY ${JAR_FILE} product-service.jar
 
-CMD ["java", "-jar", "product-service.jar"]
+ENTRYPOINT ["java", "-jar", "product-service.jar"]
 
 EXPOSE 8085
-
