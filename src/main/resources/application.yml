@@ -5,6 +5,7 @@ springdoc:
   swagger-ui:
     path: /docs
 
+
 spring:
   application:
     name: johanworks
