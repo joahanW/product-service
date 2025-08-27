@@ -36,10 +36,5 @@ pipeline {
                 sh("./mvnw test")
             }
         }
-        stage('Build Docker') {
-            steps {
-                sh("docker ps")
-            }
-        }
     }
 }
