@@ -40,7 +40,7 @@ pipeline {
            steps {
                withCredentials([usernamePassword(credentialsId: 'dockerhub-credential', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                    sh """
-                       sudo docker login -u "$DOCKER_USER" --password-stdin
+                       echo "$DOCKER_PASS" | sudo docker login -u "$DOCKER_USER" --password-stdin
                        sudo docker push johanwork/product-service
                    """
                }
