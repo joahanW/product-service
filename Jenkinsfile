@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Build Docker') {
             steps {
-                sh("docker images")
+                sh("docker ps")
             }
         }
     }
