@@ -31,11 +31,9 @@ pipeline {
                 sh("./mvnw test")
             }
         }
-        stage('Deploy') {
+        stage('Build Docker') {
             steps {
-                echo("Hello World")
-                sleep(5)
-                echo 'This for Deploy'
+                sh("docker images")
             }
         }
     }
