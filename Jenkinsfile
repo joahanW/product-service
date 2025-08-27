@@ -4,16 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'This for Build'
+                sh("./mvnw clean install")
             }
         }
-        stage('Package') {
+        stage('Testing') {
             steps {
-                echo 'This for Package'
+                sh("./mvnw test")
             }
         }
         stage('Deploy') {
             steps {
+                sleep(5)
                 echo 'This for Deploy'
             }
         }
