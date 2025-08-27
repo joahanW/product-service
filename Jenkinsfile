@@ -8,11 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Build Docker') {
-            steps {
-                sh("docker ps")
-            }
-        }
         stage("Prepare"){
             environment{
                 APP = credentials('Postgres-Credential')
@@ -34,6 +29,16 @@ pipeline {
         stage('Testing') {
             steps {
                 sh("./mvnw test")
+            }
+        }
+        stage('Build Docker') {
+            steps {
+                sh("sudo docker build -t product-service .")
+            }
+        }
+        stage('Push Docker to Repository'){
+            steps{
+                sh("sudo docker push product-service")
             }
         }
     }
