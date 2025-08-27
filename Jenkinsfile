@@ -8,6 +8,11 @@ pipeline {
     }
 
     stages {
+        stage('Build Docker') {
+            steps {
+                sh("sudo docker ps")
+            }
+        }
         stage("Prepare"){
             environment{
                 APP = credentials('Postgres-Credential')
