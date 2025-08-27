@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build Docker') {
             steps {
-                sh("sudo docker ps")
+                sh("docker ps")
             }
         }
         stage("Prepare"){
