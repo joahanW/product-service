@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Build Docker') {
             steps {
-                sh("sudo docker build -t product-service .")
+                sh("sudo docker build -t johanwork/product-service .")
             }
         }
         stage('Push Docker to Repository'){
